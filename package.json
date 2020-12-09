@@ -1,6 +1,6 @@
 {
   "name": "yt-comment-tool",
-  "homepage": "http://yemecen.github.io/yt-comment-tool",
+  "homepage": "https://yemecen.github.io/yt-comment-tool",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
