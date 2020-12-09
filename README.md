@@ -21,3 +21,5 @@ REACT_APP_API_TOKEN = Youtube Api key
 $ npm install
 $ npm start
 ```
+
+![Demo Gif](https://github.com/yemecen/yt-comment-tool/blob/master/demo.gif)
