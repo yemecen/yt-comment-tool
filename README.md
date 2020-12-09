@@ -22,4 +22,6 @@ $ npm install
 $ npm start
 ```
 
-![Demo Gif](https://github.com/yemecen/yt-comment-tool/blob/master/demo.gif)
+### Demo
+
+https://yemecen.github.io/yt-comment-tool/
