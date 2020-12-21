@@ -1,11 +1,14 @@
 import React from 'react'
 import { FaRegClock } from 'react-icons/fa';
 import { ButtonToolbar, ButtonGroup, Button, InputGroup, FormControl, OverlayTrigger, Tooltip } from 'react-bootstrap';
-
+import Mark from 'mark.js';
 
 export const CommentSearchShort = ({ comments, filterComment }) => {
 
     const filteredCommentByTimeTag = () => {
+        
+        let instance = new Mark(document.querySelector(".container"));
+        instance.markRegExp(/[0-5][0-9]:[0-5][0-9]/);
         
         let filtered = comments.filter(
             (comment) => {
@@ -24,7 +27,7 @@ export const CommentSearchShort = ({ comments, filterComment }) => {
                 return comment.snippet.topLevelComment.snippet.textOriginal.toLowerCase().indexOf(event.target.value.toLocaleLowerCase()) !== - 1;
             }
         );
-        
+
         filterComment(filtered);
     }
 
