@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Comments } from './Comments';
 import { InputGroup, FormControl, Navbar, Alert, Container, Row, Col, Spinner, Badge } from 'react-bootstrap';
-
+import { CommentSearchShort } from './CommentSearchShort';
 
 export const Search = () => {
     const [videoIdInput, setVideoIdInput] = useState("");
     const [comments, setComments] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     const apiKey = process.env.REACT_APP_API_TOKEN;
 
-    const filteredComment = (comments) => {
-        setComments(comments);
+    const filterComment = (comments) => {
+        setFilteredData(comments);
     }
 
     const onChange = (event) => {
@@ -93,7 +94,15 @@ export const Search = () => {
                 </Row>
                 <Row>
                     <Col>
-                        {comments !== undefined && (<Comments comments={comments} filteredComment={filteredComment} />)}
+                    { (comments !== undefined && comments.length > 0 ) && <CommentSearchShort comments={comments} filterComment={filterComment}/> }
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>                    
+                    {filteredData.length > 0
+                        ? <Comments comments={filteredData}/>
+                        : <Comments comments={comments}/>
+                    }
                     </Col>
                 </Row>
             </Container>

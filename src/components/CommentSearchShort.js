@@ -3,7 +3,30 @@ import { FaRegClock } from 'react-icons/fa';
 import { ButtonToolbar, ButtonGroup, Button, InputGroup, FormControl, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 
-export const CommentSearchShort = ({ filteredCommentByTimeTag, filteredCommentByWord }) => {
+export const CommentSearchShort = ({ comments, filterComment }) => {
+
+    const filteredCommentByTimeTag = () => {
+        
+        let filtered = comments.filter(
+            (comment) => {
+                return comment.snippet.topLevelComment.snippet.textOriginal.match(/[0-5][0-9]:[0-5][0-9]/g);
+            }
+        );
+
+        filterComment(filtered);
+    }
+
+    const filteredCommentByWord = (event) => {
+        event.preventDefault();
+
+        let filtered = comments.filter(
+            (comment) => {
+                return comment.snippet.topLevelComment.snippet.textOriginal.toLowerCase().indexOf(event.target.value.toLocaleLowerCase()) !== - 1;
+            }
+        );
+        
+        filterComment(filtered);
+    }
 
     return (
 
