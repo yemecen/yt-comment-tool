@@ -42,30 +42,3 @@ export const Comments = ({ comments }) => {
     )
 
 }
-
-//Arama metotları
-/*const filteredCommentByTimeTag = comments.filter(
-    (comment) => {
-        return comment.snippet.topLevelComment.snippet.textOriginal.match(/[0-5][0-9]:[0-5][0-9]/g);
-    }
-);
-
-const filteredCommentByWord = comments.filter(
-    (comment) => {
-        return comment.snippet.topLevelComment.snippet.textOriginal.toLowerCase().indexOf("searchWord".toLocaleLowerCase()) !== - 1;
-    }
-);*/
-
-//eski render
-/*return (
-    <div>
-        {
-            comments !== undefined && (<div>
-                {
-                    comments.map(((item, index) => (<div key={item.snippet.topLevelComment.id}><a href={`https://www.youtube.com/watch?v=${item.snippet.videoId}&lc=${item.snippet.topLevelComment.id}`}>{item.snippet.topLevelComment.snippet.textOriginal}</a></div>)))
-
-                }
-            </div>)
-        }
-    </div>
-)*/

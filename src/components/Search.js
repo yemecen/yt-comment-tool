@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Comments } from './Comments';
-import { InputGroup, FormControl, Navbar, Alert, Container, Row, Col, Spinner, Badge } from 'react-bootstrap';
+import { InputGroup, FormControl, Navbar, Alert, Container, Row, Col, Spinner, Badge, Image } from 'react-bootstrap';
 import { CommentSearchShort } from './CommentSearchShort';
 
 export const Search = () => {
     const [videoIdInput, setVideoIdInput] = useState("");
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState();
     const [filteredData, setFilteredData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
+    const [thumbnails, setThumbnails] = useState("");
+    
     const apiKey = process.env.REACT_APP_API_TOKEN;
 
     const filterComment = (comments) => {
@@ -59,6 +60,30 @@ export const Search = () => {
             });
     };
 
+    useEffect(async () => {
+        if (comments != null) {
+            
+            let id = document.getElementById("basic-url").value.split('https://www.youtube.com/watch?v=').length === 2 ? document.getElementById("basic-url").value.split('https://www.youtube.com/watch?v=')[1] : document.getElementById("basic-url").value;
+            
+            const apiRequest = [
+                'https://youtube.googleapis.com/youtube/v3/videos?',
+                'part=snippet',
+                `id=${id}`,
+                `key=${apiKey}`,
+            ].join('&');            
+           
+            const response = await fetch(apiRequest);
+            const data = await response.json();            
+           
+            if(data.items[0] == undefined || data.items[0].snippet == undefined) return; 
+
+            const { url, width, height } = data.items[0].snippet.thumbnails.medium;    
+            
+            setThumbnails(url);
+        }
+      
+    },[comments])
+
     return (
         <>
             <Container>
@@ -92,26 +117,25 @@ export const Search = () => {
                         )}
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                    { (comments !== undefined && comments.length > 0 ) && <CommentSearchShort comments={comments} filterComment={filterComment}/> }
+                <Row className="justify-content-md-center">
+                    <Col md={{span:4, offset:1}}>
+                        <Image src={thumbnails} thumbnail />
                     </Col>
                 </Row>
                 <Row>
-                    <Col>                    
-                    {filteredData.length > 0
-                        ? <Comments comments={filteredData}/>
-                        : <Comments comments={comments}/>
-                    }
+                    <Col>
+                        {(comments !== undefined && comments.length > 0) && <CommentSearchShort comments={comments} filterComment={filterComment} />}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        {filteredData.length > 0
+                            ? <Comments comments={filteredData} />
+                            : <Comments comments={comments} />
+                        }
                     </Col>
                 </Row>
             </Container>
         </>
     )
 }
-
-//import JSONPretty from 'react-json-pretty';
-//import 'react-json-pretty/themes/monikai.css';
-//eski
-{/*<input onChange={onChange} type="text" name="videoId" value={videoIdInput} placeholder="veri girişi yapınız..." />*/ }
-{/*<JSONPretty id="json-pretty" data={comments} ></JSONPretty>*/ }
