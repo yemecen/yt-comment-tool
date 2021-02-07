@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/yt-comment-tool/static/css/main.32479543.chunk.css",
+    "main.js": "/yt-comment-tool/static/js/main.6e93827e.chunk.js",
+    "main.js.map": "/yt-comment-tool/static/js/main.6e93827e.chunk.js.map",
+    "runtime-main.js": "/yt-comment-tool/static/js/runtime-main.e19166bd.js",
+    "runtime-main.js.map": "/yt-comment-tool/static/js/runtime-main.e19166bd.js.map",
+    "static/css/2.1a02f21c.chunk.css": "/yt-comment-tool/static/css/2.1a02f21c.chunk.css",
+    "static/js/2.976111cd.chunk.js": "/yt-comment-tool/static/js/2.976111cd.chunk.js",
+    "static/js/2.976111cd.chunk.js.map": "/yt-comment-tool/static/js/2.976111cd.chunk.js.map",
+    "index.html": "/yt-comment-tool/index.html",
+    "static/css/2.1a02f21c.chunk.css.map": "/yt-comment-tool/static/css/2.1a02f21c.chunk.css.map",
+    "static/css/main.32479543.chunk.css.map": "/yt-comment-tool/static/css/main.32479543.chunk.css.map",
+    "static/js/2.976111cd.chunk.js.LICENSE.txt": "/yt-comment-tool/static/js/2.976111cd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e19166bd.js",
+    "static/css/2.1a02f21c.chunk.css",
+    "static/js/2.976111cd.chunk.js",
+    "static/css/main.32479543.chunk.css",
+    "static/js/main.6e93827e.chunk.js"
+  ]
+}
